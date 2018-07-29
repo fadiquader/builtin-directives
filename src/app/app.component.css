@@ -1,0 +1,8 @@
+.flex {
+  display: flex;
+  justify-content: space-around
+}
+.bordered {
+  border: 1px dashed black;
+  background-color: #eee;
+}

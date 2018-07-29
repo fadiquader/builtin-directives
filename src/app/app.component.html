@@ -1,0 +1,97 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+</div>
+<div style="text-align: center">
+  <button (click)="changeCharacter()">Toggle Characters ({{ character }})</button>
+</div>
+<div class="flex">
+  <div>
+    <h1>*ngIf Example</h1>
+    <ul>
+      <li *ngIf="character === 'A'">A</li>
+      <li *ngIf="character === 'B'">B</li>
+      <li *ngIf="character === 'C'">C</li>
+      <li *ngIf="character === 'D'">D</li>
+    </ul>
+  </div>
+
+  <div>
+    <h1>NgSwitch Example</h1>
+    <ul [ngSwitch]="character">
+      <li *ngSwitchCase="'A'">A</li>
+      <li *ngSwitchCase="'B'">B</li>
+      <li *ngSwitchCase="'C'">C</li>
+      <li *ngSwitchCase="'D'">D</li>
+      <li *ngSwitchDefault>Default choice</li>
+    </ul>
+  </div>
+</div>
+<br>
+<div class="flex">
+  <div>
+    <h1>ngStyle</h1>
+    <div [style.background-color]="'yellow'">
+      Uses fixed yellow background
+    </div>
+
+    <div [ngStyle]="{color: 'white', 'background-color': 'blue'}">
+      Uses fixed white text on blue background
+    </div>
+    <br>
+    <div>
+      <div >
+        <input placeholder="color" type="text" name="color" value="{{color}}" #colorinput>
+      </div>
+      <div >
+        <input placeholder="font size" type="text" name="fontSize" value="{{fontSize}}" #fontinput>
+      </div>
+      <div [style.background-color]="color" style="color: white;">
+        {{ color }} background
+      </div>
+      <div>
+        <span [ngStyle]="{color: 'red'}"
+              [style.font-size.px]="fontSize">
+          red text
+        </span>
+      </div>
+      <button (click)="applyStyle(colorinput.value, fontinput.value)">
+        Apply Styles
+      </button>
+    </div>
+  </div>
+  <div>
+    <h1>ngClass</h1>
+    <button (click)="toggleBorder()">Toggle Border</button>
+    <div [ngClass]="{bordered: isBordered}">
+      Using object literal. Border {{ isBordered ? "ON" : "OFF" }}
+    </div>
+
+    <div [ngClass]="classesObj">
+      Using object var. Border {{ classesObj.bordered ? "ON" : "OFF" }}
+    </div>
+  </div>
+</div>
+
+<div class="flex">
+  <div>
+    <h1>*ngFor</h1>
+    <ul>
+      <li *ngFor="let p of people; let i = index">
+        {{i + 1}}- Name: {{ p.name }} / City: {{ p.city }} / Age: {{ p.age }}
+        <ul>
+          <li  *ngFor="let g of p.grade; let j = index">{{ g }}</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h1>ngNonBindable</h1>
+    <div ngNonBindable>
+      This is what {{ character }} rendered
+    </div>
+  </div>
+</div>
